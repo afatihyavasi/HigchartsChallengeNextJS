@@ -1,7 +1,16 @@
+import Layout from '../components/Layout';
+import Form from '../components/Form';
+import TopArtist from '../components/TopArtist';
+import TopTracks from '../components/TopTracks';
+import Header from '../components/Header';
+
 export default function Home() {
-  return (
-    <div className={'bg-red-400 text-red-100'}>
-      Lorem ipsum dolor sit amet.
-    </div>
-  )
+    return (
+        <Layout>
+            <Header title={'📈\u00A0\u00A0HIGHCHART CHALLENGE'} />
+            <Form />
+            <TopArtist />
+            <TopTracks />
+        </Layout>
+    );
 }
