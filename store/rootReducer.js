@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
 import topTracksReducer from './reducers/topTracksReducer';
-import topArtistsReducer from './reducers/topArtistsReducer';
+import topArtistReducer from './reducers/topArtistReducer';
 
-export default combineReducers({ topTracksReducer, topArtistsReducer });
+export default combineReducers({ topTracksReducer, topArtistReducer });

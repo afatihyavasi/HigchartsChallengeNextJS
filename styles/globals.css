@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+    .input {
+        @apply border-2 border-pink-400 mx-5 rounded focus:bg-red-100;
+    }
+}
