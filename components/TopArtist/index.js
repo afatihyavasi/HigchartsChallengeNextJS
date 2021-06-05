@@ -15,12 +15,14 @@ const TopArtist = () => {
     const value = useSelector((state) => state.topArtistReducer?.data);
     const error = useSelector((state) => state.topArtistReducer?.error);
     const country = useSelector((state) => state.formReducer?.country);
+    const topNumber = useSelector((state) => state.formReducer?.topNumber);
+
     const [options, setOptions] = useState({
         chart: {
             type: 'column',
         },
         title: {
-            text: `Top artist in ${country.toUpperCase()}`,
+            text: `Top ${topNumber} artist in ${country.toUpperCase()}`,
         },
         accessibility: {
             announceNewData: {
@@ -28,7 +30,9 @@ const TopArtist = () => {
             },
         },
         xAxis: {
-            categories: value.map((item) => item.name),
+            categories: value.map((item) => ( <Link href={`/${item.name}`}>
+                <a>{item.name}</a>
+            </Link>)),
         },
         yAxis: {
             title: {
@@ -66,7 +70,7 @@ const TopArtist = () => {
         setOptions({
             ...options,
             title: {
-                text: `Top artist in ${country.toUpperCase()}`,
+                text: `Top ${topNumber} artist in ${country.toUpperCase()}`,
             },
             xAxis: {
                 categories: value.map((item) => item.name),

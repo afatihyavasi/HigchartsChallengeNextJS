@@ -14,13 +14,14 @@ const TopTracks = () => {
     const error = useSelector((state) => state.topTracksReducer?.error);
     const value = useSelector((state) => state.topTracksReducer?.data);
     const country = useSelector((state) => state.formReducer?.country);
+    const topNumber = useSelector((state) => state.formReducer?.topNumber);
 
     const [options, setOptions] = useState({
         chart: {
             type: 'column',
         },
         title: {
-            text: `Top tracks in ${country.toUpperCase()}`,
+            text: `Top ${topNumber} tracks in ${country.toUpperCase()}`,
         },
         accessibility: {
             announceNewData: {
@@ -66,7 +67,7 @@ const TopTracks = () => {
         setOptions({
             ...options,
             title: {
-                text: `Top tracks in ${country.toUpperCase()}`,
+                text: `Top ${topNumber} tracks in ${country.toUpperCase()}`,
             },
             xAxis: {
                 categories: value.map((item) => item.name),
