@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import Link from 'next/link';
 import Spinner from '../Spinner';
 import Highcharts from 'highcharts';
 import HighchartsExporting from 'highcharts/modules/exporting';
@@ -21,7 +20,7 @@ const TopTracks = () => {
             type: 'column',
         },
         title: {
-            text: `Top tracks ${country.toUpperCase()}`,
+            text: `Top tracks in ${country.toUpperCase()}`,
         },
         accessibility: {
             announceNewData: {
@@ -67,7 +66,7 @@ const TopTracks = () => {
         setOptions({
             ...options,
             title: {
-                text: `Top tracks ${country.toUpperCase()}`,
+                text: `Top tracks in ${country.toUpperCase()}`,
             },
             xAxis: {
                 categories: value.map((item) => item.name),

@@ -18,9 +18,11 @@ export const getTopTrucks = (form) => async (dispatch) => {
     } catch {
         dispatch({
             type: GET_TOP_TRACKS_ERROR,
-            payload: `No data found ${form.country} `,
+            payload: `No data found for ${form.country.toUpperCase()} `,
         });
     } finally {
         dispatch({ type: GET_TOP_TRACKS_START, payload: false });
     }
 };
+
+
