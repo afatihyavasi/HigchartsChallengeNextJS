@@ -9,8 +9,12 @@ export default function Home() {
         <Layout>
             <Header title={'📈\u00A0\u00A0HIGHCHART CHALLENGE'} />
             <Form />
-            <TopArtist />
             <TopTracks />
+            <TopArtist />
+
         </Layout>
     );
 }
+
+//TODO:Error handling for inputs (Style and func)
+//TODO:No data found componenti tasarla

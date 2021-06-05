@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getTopArtists } from '../../store/actions/topArtistActions';
-import {getTopTrucks} from '../../store/actions/topTracksActions'
+import { getTopTrucks } from '../../store/actions/topTracksActions';
+import { setForm } from '../../store/actions/formActions';
 
 const Form = () => {
     const {
@@ -11,15 +12,30 @@ const Form = () => {
         formState: { errors },
     } = useForm();
     const dispatch = useDispatch();
+    const INITIAL_COUNTRY = useSelector((state) => state.formReducer.country);
+    const INITIAL_TOP_NUMBER = useSelector(
+        (state) => state.formReducer.topNumber
+    );
 
     useEffect(() => {
-        dispatch(getTopArtists({ country: 'Turkey', topNumber: '10' }));
-        dispatch(getTopTrucks({ country: 'Turkey', topNumber: '10' }));
+        dispatch(
+            getTopArtists({
+                country: INITIAL_COUNTRY,
+                topNumber: INITIAL_TOP_NUMBER,
+            })
+        );
+        dispatch(
+            getTopTrucks({
+                country: INITIAL_COUNTRY,
+                topNumber: INITIAL_TOP_NUMBER,
+            })
+        );
     }, []);
 
     const onSubmit = (data) => {
         dispatch(getTopArtists(data));
-        dispatch(getTopTrucks(data))
+        dispatch(getTopTrucks(data));
+        dispatch(setForm(data));
     };
     return (
         <section>
@@ -32,7 +48,7 @@ const Form = () => {
                     name="country"
                     type="text"
                     placeholder="Country name"
-                    defaultValue={'Turkey'}
+                    defaultValue={INITIAL_COUNTRY}
                     className={'input'}
                 />
 
@@ -45,7 +61,7 @@ const Form = () => {
                     name="topNumber"
                     className={'input'}
                     type="number"
-                    defaultValue={10}
+                    defaultValue={INITIAL_TOP_NUMBER}
                     placeholder="Top Number"
                 />
 
