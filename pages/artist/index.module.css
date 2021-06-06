@@ -1,0 +1,11 @@
+.aacayipsin {
+    @apply text-blue-500 bg-blue-50 p-2;
+}
+
+.image {
+    @apply flex justify-center my-5;
+}
+
+.biography {
+    @apply bg-gray-50 text-gray-800 px-8 py-10 rounded leading-7 shadow-md text-justify antialiased ;
+}
