@@ -18,7 +18,7 @@ export const getTopArtists = (form) => async (dispatch) => {
     } catch {
         dispatch({
             type: GET_TOP_ARTIST_ERROR,
-            payload: `No data found for ${form.country.toUpperCase()} `,
+            payload: `😔\u00A0\u00A0No data found for ${form.country.toUpperCase()} `,
         });
     } finally {
         dispatch({ type: GET_TOP_ARTIST_START, payload: false });

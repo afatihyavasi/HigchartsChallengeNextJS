@@ -10,11 +10,11 @@ if (typeof Highcharts === 'object') {
 }
 
 const TopTracks = () => {
-    const isLoading = useSelector((state) => state.topTracksReducer?.isLoading);
-    const error = useSelector((state) => state.topTracksReducer?.error);
-    const value = useSelector((state) => state.topTracksReducer?.data);
-    const country = useSelector((state) => state.formReducer?.country);
-    const topNumber = useSelector((state) => state.formReducer?.topNumber);
+    const isLoading = useSelector((state) => state?.topTracksReducer?.isLoading);
+    const error = useSelector((state) => state?.topTracksReducer?.error);
+    const value = useSelector((state) => state?.topTracksReducer?.data);
+    const country = useSelector((state) => state?.formReducer?.country);
+    const topNumber = useSelector((state) => state?.formReducer?.topNumber);
 
     const [options, setOptions] = useState({
         chart: {
@@ -87,9 +87,7 @@ const TopTracks = () => {
         <div>
             {isLoading ? (
                 <Spinner />
-            ) : error ? (
-                <div>{error}</div>
-            ) : (
+            ) : error ? null : (
                 <HighchartsReact highcharts={Highcharts} options={options} />
             )}
         </div>

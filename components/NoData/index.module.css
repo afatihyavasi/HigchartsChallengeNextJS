@@ -1,0 +1,7 @@
+.noData {
+    @apply flex justify-center pt-20;
+}
+
+.text {
+    @apply text-3xl bg-yellow-50 text-yellow-500 px-3 py-2 rounded;
+}

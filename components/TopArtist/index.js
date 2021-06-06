@@ -6,6 +6,7 @@ import HighchartsExporting from 'highcharts/modules/exporting';
 import HighchartsReact from 'highcharts-react-official';
 import Spinner from '../Spinner';
 import slugify from 'slugify';
+import NoData from '../NoData';
 
 if (typeof Highcharts === 'object') {
     HighchartsExporting(Highcharts);
@@ -132,7 +133,7 @@ const TopArtist = () => {
             {isLoading ? (
                 <Spinner />
             ) : error ? (
-                <div>{error}</div>
+                <NoData errorMessage={error} />
             ) : (
                 <div>
                     <HighchartsReact

@@ -3,7 +3,7 @@ const Spinner = () => {
     return (
         <div className={'flex justify-center content-center pt-20 h-96'}>
             <Loader
-                type="Ball"
+                type="Audio"
                 color="#000"
                 height={50}
                 width={50}
