@@ -45,13 +45,12 @@ const Form = () => {
                     <input
                         {...register('country', {
                             required: true,
-                            minLength: 3,
                         })}
                         name="country"
+                        className={errors.country ? 'input-error' : 'input'}
                         type="text"
                         placeholder="Country name"
                         defaultValue={INITIAL_COUNTRY}
-                        className={'input'}
                     />
 
                     <input
@@ -61,16 +60,26 @@ const Form = () => {
                             max: 50,
                         })}
                         name="topNumber"
-                        className={'input'}
+                        className={errors.topNumber ? 'input-error' : 'input'}
                         type="number"
                         defaultValue={INITIAL_TOP_NUMBER}
                         placeholder="Top Number"
                     />
                 </div>
+                {errors.country && (
+                    <div className={styles.error}>
+                        Country name must be required
+                    </div>
+                )}
+                {errors.topNumber && (
+                    <div className={styles.error}>
+                        Numbers must be between 0-50
+                    </div>
+                )}
 
-
-                {errors.topNumber && 'numbers in 0-50'}
-                <button type='submit' className={styles.button}>Submit</button>
+                <button type="submit" className={styles.button}>
+                    Submit
+                </button>
             </form>
         </section>
     );

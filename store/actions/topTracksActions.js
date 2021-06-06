@@ -24,5 +24,3 @@ export const getTopTrucks = (form) => async (dispatch) => {
         dispatch({ type: GET_TOP_TRACKS_START, payload: false });
     }
 };
-
-

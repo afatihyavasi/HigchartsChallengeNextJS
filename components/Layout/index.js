@@ -5,9 +5,7 @@ const Index = ({ children }) => {
             <Head>
                 <title>Highchart Challenge</title>
             </Head>
-            <div className="container mx-auto py-10 px-5 ">
-                {children}
-            </div>
+            <div className="container mx-auto py-10 px-5 ">{children}</div>
         </>
     );
 };

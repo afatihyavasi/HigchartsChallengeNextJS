@@ -7,5 +7,5 @@
 }
 
 .biography {
-    @apply bg-gray-50 text-gray-800 px-8 py-10 rounded leading-7 shadow-md text-justify antialiased ;
+    @apply bg-gray-50 text-gray-800 px-8 py-10 rounded leading-7 shadow-md text-justify antialiased;
 }

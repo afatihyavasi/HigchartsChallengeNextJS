@@ -11,11 +11,9 @@ export default function Home() {
             <Form />
             <TopTracks />
             <TopArtist />
-
         </Layout>
     );
 }
 
 //TODO:Error handling for inputs (Style and func)
 //TODO:No data found componenti tasarla
-//TODO:Spinner tasarla

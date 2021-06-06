@@ -5,7 +5,7 @@ import Highcharts from 'highcharts';
 import HighchartsExporting from 'highcharts/modules/exporting';
 import HighchartsReact from 'highcharts-react-official';
 import Spinner from '../Spinner';
-import slugify from 'slugify'
+import slugify from 'slugify';
 
 if (typeof Highcharts === 'object') {
     HighchartsExporting(Highcharts);
@@ -54,7 +54,12 @@ const TopArtist = () => {
                         click: function () {
                             router.push({
                                 pathname: 'artist/[slug]',
-                                query: { slug:  slugify(this.category,{lower:true,remove: /[*+~.()'"!:@]/g}) },
+                                query: {
+                                    slug: slugify(this.category, {
+                                        lower: true,
+                                        remove: /[*+~.()'"!:@]/g,
+                                    }),
+                                },
                             });
                         },
                     },
@@ -98,7 +103,12 @@ const TopArtist = () => {
                             click: function () {
                                 router.push({
                                     pathname: 'artist/[slug]',
-                                    query: { slug: slugify(this.category,{lower:true,remove: /[*+~.()'"!:@]/g})},
+                                    query: {
+                                        slug: slugify(this.category, {
+                                            lower: true,
+                                            remove: /[*+~.()'"!:@]/g,
+                                        }),
+                                    },
                                 });
                             },
                         },
@@ -118,13 +128,13 @@ const TopArtist = () => {
     }, [value]);
 
     return (
-        <div >
+        <div>
             {isLoading ? (
                 <Spinner />
             ) : error ? (
                 <div>{error}</div>
             ) : (
-                <div >
+                <div>
                     <HighchartsReact
                         highcharts={Highcharts}
                         options={options}

@@ -1,10 +1,10 @@
 import Loader from 'react-loader-spinner';
 const Spinner = () => {
     return (
-        <div className={'flex justify-center content-center h-96'}>
+        <div className={'flex justify-center content-center pt-20 h-96'}>
             <Loader
                 type="Ball"
-                color="#000000"
+                color="#000"
                 height={50}
                 width={50}
                 timeout={5000}
