@@ -5,6 +5,9 @@
 
 @layer components {
     .input {
-        @apply border-2 border-pink-400 mx-5 rounded focus:bg-red-100;
+        @apply border-2 border-green-400 mx-3 py-1 pl-2 rounded-md focus:bg-gray-50 ;
     }
+
+
+
 }

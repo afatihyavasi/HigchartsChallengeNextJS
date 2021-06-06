@@ -18,3 +18,4 @@ export default function Home() {
 
 //TODO:Error handling for inputs (Style and func)
 //TODO:No data found componenti tasarla
+//TODO:Spinner tasarla

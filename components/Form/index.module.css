@@ -1,0 +1,10 @@
+.form{
+    @apply flex flex-col items-center my-5
+}
+.inputContainer{
+    @apply   flex justify-center content-center my-5
+
+}
+.button{
+    @apply bg-green-400 text-white px-3 py-1 rounded transition hover:bg-green-500
+}

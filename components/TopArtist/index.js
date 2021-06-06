@@ -118,18 +118,18 @@ const TopArtist = () => {
     }, [value]);
 
     return (
-        <div>
+        <div >
             {isLoading ? (
                 <Spinner />
             ) : error ? (
                 <div>{error}</div>
             ) : (
-                <>
+                <div >
                     <HighchartsReact
                         highcharts={Highcharts}
                         options={options}
                     />
-                </>
+                </div>
             )}
         </div>
     );
