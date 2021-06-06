@@ -1,10 +1,10 @@
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
-import Link from 'next/link'
 import Spinner from '../Spinner';
 import Highcharts from 'highcharts';
 import HighchartsExporting from 'highcharts/modules/exporting';
 import HighchartsReact from 'highcharts-react-official';
-import { useEffect, useState } from 'react';
 
 if (typeof Highcharts === 'object') {
     HighchartsExporting(Highcharts);
@@ -16,6 +16,7 @@ const TopArtist = () => {
     const error = useSelector((state) => state.topArtistReducer?.error);
     const country = useSelector((state) => state.formReducer?.country);
     const topNumber = useSelector((state) => state.formReducer?.topNumber);
+    const router = useRouter();
 
     const [options, setOptions] = useState({
         chart: {
@@ -30,9 +31,7 @@ const TopArtist = () => {
             },
         },
         xAxis: {
-            categories: value.map((item) => ( <Link href={`/${item.name}`}>
-                <a>{item.name}</a>
-            </Link>)),
+            categories: value.map((item) => item.name),
         },
         yAxis: {
             title: {
@@ -44,10 +43,20 @@ const TopArtist = () => {
         },
         plotOptions: {
             series: {
-                borderWidth: 0,
+                borderWidth: 1,
                 dataLabels: {
                     enabled: true,
                     format: '{point.y:.f}',
+                },
+                point: {
+                    events: {
+                        click: function () {
+                            router.push({
+                                pathname: 'artist/[slug]',
+                                query: { slug: this.category },
+                            });
+                        },
+                    },
                 },
             },
         },
@@ -58,13 +67,14 @@ const TopArtist = () => {
         series: [
             {
                 colorByPoint: true,
-                cursor:'pointer',
+                cursor: 'pointer',
                 data: value.map((item) => {
                     return { name: item.name, y: Number(item.listeners) };
                 }),
             },
         ],
     });
+
     useEffect(() => {
         window.Highcharts = Highcharts;
         setOptions({
@@ -75,10 +85,29 @@ const TopArtist = () => {
             xAxis: {
                 categories: value.map((item) => item.name),
             },
+            plotOptions: {
+                series: {
+                    borderWidth: 1,
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.y:.f}',
+                    },
+                    point: {
+                        events: {
+                            click: function () {
+                                router.push({
+                                    pathname: 'artist/[slug]',
+                                    query: { slug: this.category },
+                                });
+                            },
+                        },
+                    },
+                },
+            },
             series: [
                 {
                     colorByPoint: true,
-                    cursor:'pointer',
+                    cursor: 'pointer',
                     data: value.map((item) => {
                         return { name: item.name, y: Number(item.listeners) };
                     }),
@@ -86,6 +115,7 @@ const TopArtist = () => {
             ],
         });
     }, [value]);
+
     return (
         <div>
             {isLoading ? (
@@ -93,7 +123,12 @@ const TopArtist = () => {
             ) : error ? (
                 <div>{error}</div>
             ) : (
-                <HighchartsReact highcharts={Highcharts} options={options} />
+                <>
+                    <HighchartsReact
+                        highcharts={Highcharts}
+                        options={options}
+                    />
+                </>
             )}
         </div>
     );
