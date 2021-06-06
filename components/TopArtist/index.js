@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
-import Spinner from '../Spinner';
 import Highcharts from 'highcharts';
 import HighchartsExporting from 'highcharts/modules/exporting';
 import HighchartsReact from 'highcharts-react-official';
+import Spinner from '../Spinner';
+import slugify from 'slugify'
 
 if (typeof Highcharts === 'object') {
     HighchartsExporting(Highcharts);
@@ -53,7 +54,7 @@ const TopArtist = () => {
                         click: function () {
                             router.push({
                                 pathname: 'artist/[slug]',
-                                query: { slug: this.category },
+                                query: { slug:  slugify(this.category,{lower:true,remove: /[*+~.()'"!:@]/g}) },
                             });
                         },
                     },
@@ -97,7 +98,7 @@ const TopArtist = () => {
                             click: function () {
                                 router.push({
                                     pathname: 'artist/[slug]',
-                                    query: { slug: this.category },
+                                    query: { slug: slugify(this.category,{lower:true,remove: /[*+~.()'"!:@]/g})},
                                 });
                             },
                         },
